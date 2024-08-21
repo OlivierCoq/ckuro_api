@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_navigation_nav_links",
+  "info": {
+    "displayName": "nav_link"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "imagery": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

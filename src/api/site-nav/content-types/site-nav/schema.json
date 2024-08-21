@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_navs",
+  "info": {
+    "singularName": "site-nav",
+    "pluralName": "site-navs",
+    "displayName": "Site_Nav"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.nav-link"
+    }
+  }
+}
