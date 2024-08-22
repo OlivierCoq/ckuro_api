@@ -827,6 +827,39 @@ export interface ApiAlbumAlbum extends Schema.CollectionType {
   };
 }
 
+export interface ApiArtProjectArtProject extends Schema.CollectionType {
+  collectionName: 'art_projects';
+  info: {
+    singularName: 'art-project';
+    pluralName: 'art-projects';
+    displayName: 'Art Project';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    release_data: Attribute.Date;
+    media: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    description: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::art-project.art-project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::art-project.art-project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiMusicArtistMusicArtist extends Schema.CollectionType {
   collectionName: 'music_artists';
   info: {
@@ -965,6 +998,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::album.album': ApiAlbumAlbum;
+      'api::art-project.art-project': ApiArtProjectArtProject;
       'api::music-artist.music-artist': ApiMusicArtistMusicArtist;
       'api::site-nav.site-nav': ApiSiteNavSiteNav;
       'api::track.track': ApiTrackTrack;
