@@ -15,6 +15,17 @@ export interface WorkRatings extends Schema.Component {
   };
 }
 
+export interface WorkArtProjectVideo extends Schema.Component {
+  collectionName: 'components_work_art_project_videos';
+  info: {
+    displayName: 'art_project_video';
+  };
+  attributes: {
+    title: Attribute.String;
+    link: Attribute.String;
+  };
+}
+
 export interface NavigationNavLink extends Schema.Component {
   collectionName: 'components_navigation_nav_links';
   info: {
@@ -52,6 +63,7 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'work.ratings': WorkRatings;
+      'work.art-project-video': WorkArtProjectVideo;
       'navigation.nav-link': NavigationNavLink;
       'creators.social-link': CreatorsSocialLink;
     }

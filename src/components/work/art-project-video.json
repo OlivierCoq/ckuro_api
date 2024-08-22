@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_work_art_project_videos",
+  "info": {
+    "displayName": "art_project_video"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

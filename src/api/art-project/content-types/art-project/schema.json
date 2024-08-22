@@ -4,7 +4,8 @@
   "info": {
     "singularName": "art-project",
     "pluralName": "art-projects",
-    "displayName": "Art Project"
+    "displayName": "Art Project",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -17,18 +18,24 @@
     "release_data": {
       "type": "date"
     },
-    "media": {
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "description": {
       "type": "richtext"
+    },
+    "videos": {
+      "type": "component",
+      "repeatable": true,
+      "component": "work.art-project-video"
     }
   }
 }
