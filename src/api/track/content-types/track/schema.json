@@ -31,12 +31,6 @@
       "relation": "oneToOne",
       "target": "api::album.album"
     },
-    "music_artists": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::music-artist.music-artist",
-      "mappedBy": "track"
-    },
     "ratings": {
       "type": "component",
       "repeatable": false,
@@ -44,6 +38,12 @@
     },
     "audio_file": {
       "type": "string"
+    },
+    "music_artists": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::music-artist.music-artist",
+      "mappedBy": "tracks"
     }
   }
 }

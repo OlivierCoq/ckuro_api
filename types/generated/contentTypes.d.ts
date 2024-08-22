@@ -803,12 +803,12 @@ export interface ApiAlbumAlbum extends Schema.CollectionType {
     title: Attribute.String;
     release_date: Attribute.Date;
     artwork: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    ratings: Attribute.Component<'work.ratings'>;
     music_artists: Attribute.Relation<
       'api::album.album',
       'oneToMany',
       'api::music-artist.music-artist'
     >;
-    ratings: Attribute.Component<'work.ratings'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -879,12 +879,12 @@ export interface ApiMusicArtistMusicArtist extends Schema.CollectionType {
     profile_picture: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     pictures: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
     socials: Attribute.Component<'creators.social-link', true>;
-    album: Attribute.Relation<
+    albums: Attribute.Relation<
       'api::music-artist.music-artist',
       'manyToOne',
       'api::album.album'
     >;
-    track: Attribute.Relation<
+    tracks: Attribute.Relation<
       'api::music-artist.music-artist',
       'manyToOne',
       'api::track.track'
@@ -956,13 +956,13 @@ export interface ApiTrackTrack extends Schema.CollectionType {
       'oneToOne',
       'api::album.album'
     >;
+    ratings: Attribute.Component<'work.ratings'>;
+    audio_file: Attribute.String;
     music_artists: Attribute.Relation<
       'api::track.track',
       'oneToMany',
       'api::music-artist.music-artist'
     >;
-    ratings: Attribute.Component<'work.ratings'>;
-    audio_file: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

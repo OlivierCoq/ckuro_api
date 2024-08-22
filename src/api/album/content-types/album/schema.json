@@ -29,16 +29,16 @@
         "audios"
       ]
     },
-    "music_artists": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::music-artist.music-artist",
-      "mappedBy": "album"
-    },
     "ratings": {
       "type": "component",
       "repeatable": false,
       "component": "work.ratings"
+    },
+    "music_artists": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::music-artist.music-artist",
+      "mappedBy": "albums"
     }
   }
 }
