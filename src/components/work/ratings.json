@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_work_ratings",
+  "info": {
+    "displayName": "rating_system",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "five_stars": {
+      "type": "integer"
+    },
+    "four_stars": {
+      "type": "integer"
+    },
+    "three_stars": {
+      "type": "integer"
+    },
+    "two_stars": {
+      "type": "integer"
+    },
+    "one_star": {
+      "type": "integer"
+    }
+  }
+}

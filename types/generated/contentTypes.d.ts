@@ -362,36 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiSiteNavSiteNav extends Schema.SingleType {
-  collectionName: 'site_navs';
-  info: {
-    singularName: 'site-nav';
-    pluralName: 'site-navs';
-    displayName: 'Site_Nav';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    links: Attribute.Component<'navigation.nav-link', true>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::site-nav.site-nav',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::site-nav.site-nav',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -818,6 +788,164 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAlbumAlbum extends Schema.CollectionType {
+  collectionName: 'albums';
+  info: {
+    singularName: 'album';
+    pluralName: 'albums';
+    displayName: 'Album';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    release_date: Attribute.Date;
+    artwork: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    music_artists: Attribute.Relation<
+      'api::album.album',
+      'oneToMany',
+      'api::music-artist.music-artist'
+    >;
+    ratings: Attribute.Component<'work.ratings'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::album.album',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::album.album',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMusicArtistMusicArtist extends Schema.CollectionType {
+  collectionName: 'music_artists';
+  info: {
+    singularName: 'music-artist';
+    pluralName: 'music-artists';
+    displayName: 'Music Artist';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    bio: Attribute.RichText;
+    profile_picture: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    pictures: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    socials: Attribute.Component<'creators.social-link', true>;
+    album: Attribute.Relation<
+      'api::music-artist.music-artist',
+      'manyToOne',
+      'api::album.album'
+    >;
+    track: Attribute.Relation<
+      'api::music-artist.music-artist',
+      'manyToOne',
+      'api::track.track'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::music-artist.music-artist',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::music-artist.music-artist',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSiteNavSiteNav extends Schema.SingleType {
+  collectionName: 'site_navs';
+  info: {
+    singularName: 'site-nav';
+    pluralName: 'site-navs';
+    displayName: 'Site_Nav';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    links: Attribute.Component<'navigation.nav-link', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::site-nav.site-nav',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::site-nav.site-nav',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTrackTrack extends Schema.CollectionType {
+  collectionName: 'tracks';
+  info: {
+    singularName: 'track';
+    pluralName: 'tracks';
+    displayName: 'Track';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    audio_file: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    single_cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    album: Attribute.Relation<
+      'api::track.track',
+      'oneToOne',
+      'api::album.album'
+    >;
+    music_artists: Attribute.Relation<
+      'api::track.track',
+      'oneToMany',
+      'api::music-artist.music-artist'
+    >;
+    ratings: Attribute.Component<'work.ratings'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::track.track',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::track.track',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -828,7 +956,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::site-nav.site-nav': ApiSiteNavSiteNav;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -837,6 +964,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::album.album': ApiAlbumAlbum;
+      'api::music-artist.music-artist': ApiMusicArtistMusicArtist;
+      'api::site-nav.site-nav': ApiSiteNavSiteNav;
+      'api::track.track': ApiTrackTrack;
     }
   }
 }

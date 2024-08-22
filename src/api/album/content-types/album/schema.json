@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "albums",
+  "info": {
+    "singularName": "album",
+    "pluralName": "albums",
+    "displayName": "Album",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "release_date": {
+      "type": "date"
+    },
+    "artwork": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "music_artists": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::music-artist.music-artist",
+      "mappedBy": "album"
+    },
+    "ratings": {
+      "type": "component",
+      "repeatable": false,
+      "component": "work.ratings"
+    }
+  }
+}
