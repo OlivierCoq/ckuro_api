@@ -1,5 +1,17 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface NavigationNavLink extends Schema.Component {
+  collectionName: 'components_navigation_nav_links';
+  info: {
+    displayName: 'nav_link';
+  };
+  attributes: {
+    label: Attribute.String;
+    imagery: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    link: Attribute.String;
+  };
+}
+
 export interface WorkRatings extends Schema.Component {
   collectionName: 'components_work_ratings';
   info: {
@@ -12,18 +24,6 @@ export interface WorkRatings extends Schema.Component {
     three_stars: Attribute.Integer;
     two_stars: Attribute.Integer;
     one_star: Attribute.Integer;
-  };
-}
-
-export interface NavigationNavLink extends Schema.Component {
-  collectionName: 'components_navigation_nav_links';
-  info: {
-    displayName: 'nav_link';
-  };
-  attributes: {
-    label: Attribute.String;
-    imagery: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
-    link: Attribute.String;
   };
 }
 
@@ -51,8 +51,8 @@ export interface CreatorsSocialLink extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'work.ratings': WorkRatings;
       'navigation.nav-link': NavigationNavLink;
+      'work.ratings': WorkRatings;
       'creators.social-link': CreatorsSocialLink;
     }
   }
