@@ -809,6 +809,11 @@ export interface ApiAlbumAlbum extends Schema.CollectionType {
       'oneToMany',
       'api::music-artist.music-artist'
     >;
+    tracks: Attribute.Relation<
+      'api::album.album',
+      'manyToMany',
+      'api::track.track'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -962,6 +967,11 @@ export interface ApiTrackTrack extends Schema.CollectionType {
       'api::track.track',
       'oneToMany',
       'api::music-artist.music-artist'
+    >;
+    albums: Attribute.Relation<
+      'api::track.track',
+      'manyToMany',
+      'api::album.album'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
