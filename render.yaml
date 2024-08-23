@@ -1,12 +1,12 @@
 services:
   - type: web
-    name: strapi
+    name: cKuro API
     env: node
     plan: starter
     buildCommand: yarn install && yarn build
     startCommand: yarn start
     healthCheckPath: /_health
-    autoDeploy: true
+    autoDeploy: false
     envVars:
       - key: NODE_VERSION
         value: 20.14.0
