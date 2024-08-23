@@ -53,7 +53,7 @@
     },
     "tracks": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::track.track",
       "inversedBy": "music_artists"
     }

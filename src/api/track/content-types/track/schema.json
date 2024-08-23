@@ -41,7 +41,7 @@
     },
     "music_artists": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::music-artist.music-artist",
       "mappedBy": "tracks"
     },

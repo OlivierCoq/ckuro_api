@@ -891,7 +891,7 @@ export interface ApiMusicArtistMusicArtist extends Schema.CollectionType {
     >;
     tracks: Attribute.Relation<
       'api::music-artist.music-artist',
-      'manyToOne',
+      'manyToMany',
       'api::track.track'
     >;
     createdAt: Attribute.DateTime;
@@ -965,7 +965,7 @@ export interface ApiTrackTrack extends Schema.CollectionType {
     audio_file: Attribute.String;
     music_artists: Attribute.Relation<
       'api::track.track',
-      'oneToMany',
+      'manyToMany',
       'api::music-artist.music-artist'
     >;
     albums: Attribute.Relation<
