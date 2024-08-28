@@ -50,6 +50,11 @@
       "relation": "manyToMany",
       "target": "api::album.album",
       "mappedBy": "tracks"
+    },
+    "genres": {
+      "type": "component",
+      "repeatable": true,
+      "component": "work.filter"
     }
   }
 }

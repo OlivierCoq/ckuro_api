@@ -912,6 +912,38 @@ export interface ApiMusicArtistMusicArtist extends Schema.CollectionType {
   };
 }
 
+export interface ApiMusicInterfaceMusicInterface extends Schema.SingleType {
+  collectionName: 'music_interfaces';
+  info: {
+    singularName: 'music-interface';
+    pluralName: 'music-interfaces';
+    displayName: 'Music Interface';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    genres: Attribute.Component<'work.filter', true>;
+    artists: Attribute.Component<'work.filter', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::music-interface.music-interface',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::music-interface.music-interface',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSiteNavSiteNav extends Schema.SingleType {
   collectionName: 'site_navs';
   info: {
@@ -973,6 +1005,7 @@ export interface ApiTrackTrack extends Schema.CollectionType {
       'manyToMany',
       'api::album.album'
     >;
+    genres: Attribute.Component<'work.filter', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1012,6 +1045,7 @@ declare module '@strapi/types' {
       'api::album.album': ApiAlbumAlbum;
       'api::art-project.art-project': ApiArtProjectArtProject;
       'api::music-artist.music-artist': ApiMusicArtistMusicArtist;
+      'api::music-interface.music-interface': ApiMusicInterfaceMusicInterface;
       'api::site-nav.site-nav': ApiSiteNavSiteNav;
       'api::track.track': ApiTrackTrack;
     }

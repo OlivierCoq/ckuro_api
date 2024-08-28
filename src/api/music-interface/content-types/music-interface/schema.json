@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "music_interfaces",
+  "info": {
+    "singularName": "music-interface",
+    "pluralName": "music-interfaces",
+    "displayName": "Music Interface",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "genres": {
+      "type": "component",
+      "repeatable": true,
+      "component": "work.filter"
+    },
+    "artists": {
+      "type": "component",
+      "repeatable": true,
+      "component": "work.filter"
+    }
+  }
+}

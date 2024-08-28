@@ -15,6 +15,19 @@ export interface WorkRatings extends Schema.Component {
   };
 }
 
+export interface WorkFilter extends Schema.Component {
+  collectionName: 'components_work_filters';
+  info: {
+    displayName: 'filter';
+    description: '';
+  };
+  attributes: {
+    label: Attribute.String;
+    value: Attribute.String;
+    active: Attribute.Boolean & Attribute.DefaultTo<false>;
+  };
+}
+
 export interface WorkArtProjectVideo extends Schema.Component {
   collectionName: 'components_work_art_project_videos';
   info: {
@@ -63,6 +76,7 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'work.ratings': WorkRatings;
+      'work.filter': WorkFilter;
       'work.art-project-video': WorkArtProjectVideo;
       'navigation.nav-link': NavigationNavLink;
       'creators.social-link': CreatorsSocialLink;
