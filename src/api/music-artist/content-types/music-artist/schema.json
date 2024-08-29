@@ -45,16 +45,16 @@
       "repeatable": true,
       "component": "creators.social-link"
     },
-    "albums": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::album.album",
-      "inversedBy": "music_artists"
-    },
     "tracks": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::track.track",
+      "inversedBy": "music_artists"
+    },
+    "albums": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::album.album",
       "inversedBy": "music_artists"
     }
   }

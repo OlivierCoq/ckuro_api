@@ -806,7 +806,7 @@ export interface ApiAlbumAlbum extends Schema.CollectionType {
     ratings: Attribute.Component<'work.ratings'>;
     music_artists: Attribute.Relation<
       'api::album.album',
-      'oneToMany',
+      'manyToMany',
       'api::music-artist.music-artist'
     >;
     tracks: Attribute.Relation<
@@ -884,15 +884,15 @@ export interface ApiMusicArtistMusicArtist extends Schema.CollectionType {
     profile_picture: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     pictures: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
     socials: Attribute.Component<'creators.social-link', true>;
-    albums: Attribute.Relation<
-      'api::music-artist.music-artist',
-      'manyToOne',
-      'api::album.album'
-    >;
     tracks: Attribute.Relation<
       'api::music-artist.music-artist',
       'manyToMany',
       'api::track.track'
+    >;
+    albums: Attribute.Relation<
+      'api::music-artist.music-artist',
+      'manyToMany',
+      'api::album.album'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
