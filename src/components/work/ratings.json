@@ -7,19 +7,36 @@
   "options": {},
   "attributes": {
     "five_stars": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0,
+      "required": true
     },
     "four_stars": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0,
+      "required": true
     },
     "three_stars": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0,
+      "required": true
     },
     "two_stars": {
-      "type": "integer"
+      "type": "integer",
+      "required": true,
+      "default": 0
     },
     "one_star": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0,
+      "required": true
+    },
+    "average_rating": {
+      "type": "decimal"
+    },
+    "num_votes": {
+      "type": "integer",
+      "default": 0
     }
   }
 }
