@@ -14,7 +14,7 @@ export interface WorkRatings extends Schema.Component {
       Attribute.DefaultTo<0>;
     two_stars: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<0>;
     one_star: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<0>;
-    average_rating: Attribute.Decimal;
+    average_rating: Attribute.Decimal & Attribute.DefaultTo<0>;
     num_votes: Attribute.Integer & Attribute.DefaultTo<0>;
   };
 }

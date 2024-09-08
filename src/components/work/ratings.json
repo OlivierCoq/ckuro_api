@@ -32,7 +32,8 @@
       "required": true
     },
     "average_rating": {
-      "type": "decimal"
+      "type": "decimal",
+      "default": 0
     },
     "num_votes": {
       "type": "integer",
