@@ -48,6 +48,18 @@ export interface WorkArtProjectVideo extends Schema.Component {
   };
 }
 
+export interface NavigationNavLink extends Schema.Component {
+  collectionName: 'components_navigation_nav_links';
+  info: {
+    displayName: 'nav_link';
+  };
+  attributes: {
+    label: Attribute.String;
+    imagery: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    link: Attribute.String;
+  };
+}
+
 export interface CreatorsSocialLink extends Schema.Component {
   collectionName: 'components_creators_social_links';
   info: {
@@ -69,26 +81,14 @@ export interface CreatorsSocialLink extends Schema.Component {
   };
 }
 
-export interface NavigationNavLink extends Schema.Component {
-  collectionName: 'components_navigation_nav_links';
-  info: {
-    displayName: 'nav_link';
-  };
-  attributes: {
-    label: Attribute.String;
-    imagery: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
-    link: Attribute.String;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'work.ratings': WorkRatings;
       'work.filter': WorkFilter;
       'work.art-project-video': WorkArtProjectVideo;
-      'creators.social-link': CreatorsSocialLink;
       'navigation.nav-link': NavigationNavLink;
+      'creators.social-link': CreatorsSocialLink;
     }
   }
 }

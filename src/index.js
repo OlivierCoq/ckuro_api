@@ -17,6 +17,6 @@ module.exports = {
    * run jobs, or perform some special logic.
    */
   bootstrap({ strapi }) {
-    strapi.server.httpServer.requestTimeout = 30 * 60 * 1000;
+    strapi.server.httpServer.requestTimeout = 40 * 60 * 1000;
   },
 };

@@ -56,7 +56,17 @@ module.exports = [
   { name: "strapi::cors" },
   { name: "strapi::poweredBy" },
   { name: "strapi::query" },
-  { name: "strapi::body" },
+  {
+    name: "strapi::body",
+    config: {
+      formLimit: "256mb", // modify form body
+      jsonLimit: "256mb", // modify JSON body
+      textLimit: "256mb", // modify text body
+      formidable: {
+        maxFileSize: 250 * 1024 * 1024 * 1024, // multipart data, modify here limit of uploaded file size
+      },
+    },
+  },
   { name: "strapi::session" },
   { name: "strapi::favicon" },
   { name: "strapi::public" },

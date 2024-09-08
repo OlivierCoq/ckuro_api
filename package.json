@@ -15,7 +15,7 @@
     "strapi": "strapi"
   },
   "resolutions": {
-    "formidable": "1.1.1"
+    "formidable": "3.5.1"
   },
   "dependencies": {
     "@_sh/strapi-plugin-ckeditor": "^2.1.3",
