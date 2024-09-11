@@ -1,52 +1,26 @@
 module.exports = [
   { name: "strapi::logger" },
   { name: "strapi::errors" },
-  {
-    name: "strapi::security",
-    config: {
-      contentSecurityPolicy: {
-        useDefaults: true,
-        directives: {
-          "connect-src": ["'self'", "https:"],
-          "img-src": [
-            "'self'",
-            "data:",
-            "blob:",
-            "market-assets.strapi.io",
-            "res.cloudinary.com",
-          ],
-          "media-src": [
-            "'self'",
-            "data:",
-            "blob:",
-            "market-assets.strapi.io",
-            "res.cloudinary.com",
-          ],
-          upgradeInsecureRequests: null,
-        },
-      },
-    },
-  },
   // {
-  //   name: 'strapi::security',
+  //   name: "strapi::security",
   //   config: {
   //     contentSecurityPolicy: {
   //       useDefaults: true,
   //       directives: {
-  //         'connect-src': ["'self'", 'https:'],
-  //         'img-src': [
+  //         "connect-src": ["'self'", "https:"],
+  //         "img-src": [
   //           "'self'",
-  //           'data:',
-  //           'blob:',
-  //           'market-assets.strapi.io',
-  //           'ckuro-creative-projects.s3.us-east-2.amazonaws.com',
+  //           "data:",
+  //           "blob:",
+  //           "market-assets.strapi.io",
+  //           "res.cloudinary.com",
   //         ],
-  //         'media-src': [
+  //         "media-src": [
   //           "'self'",
-  //           'data:',
-  //           'blob:',
-  //           'market-assets.strapi.io',
-  //           'ckuro-creative-projects.s3.us-east-2.amazonaws.com',
+  //           "data:",
+  //           "blob:",
+  //           "market-assets.strapi.io",
+  //           "res.cloudinary.com",
   //         ],
   //         upgradeInsecureRequests: null,
   //       },
@@ -54,15 +28,32 @@ module.exports = [
   //   },
   // },
   {
-    name: 'strapi::cors',
+    name: 'strapi::security',
     config: {
-      enabled: true,
-      headers: '*',
-      origin: ['http://localhost:1337', 'http://localhost:3000', 'http://localhost:3001', 'https://ckuro-creative-projects.s3.us-east-2.amazonaws.com', 'https://ckuro.cc'],
-      methods: ['GET', 'POST', 'PUT', 'DELETE'],
-      keepHeaderOnError: true,
-    }
+      contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+          'connect-src': ["'self'", 'https:'],
+          'img-src': [
+            "'self'",
+            'data:',
+            'blob:',
+            'market-assets.strapi.io',
+            'ckuro-creative-projects.s3.us-east-2.amazonaws.com',
+          ],
+          'media-src': [
+            "'self'",
+            'data:',
+            'blob:',
+            'market-assets.strapi.io',
+            'ckuro-creative-projects.s3.us-east-2.amazonaws.com',
+          ],
+          upgradeInsecureRequests: null,
+        },
+      },
+    },
   },
+  { name: "strapi::cors" },
   { name: "strapi::poweredBy" },
   { name: "strapi::query" },
   {
