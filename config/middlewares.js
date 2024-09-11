@@ -53,7 +53,14 @@ module.exports = [
       },
     },
   },
-  { name: "strapi::cors" },
+  {
+    name: 'strapi::cors',
+    config: {
+      enabled: true,
+      headers: '*',
+      origin: ['http://localhost:1337', 'http://localhost:3000', 'http://localhost:3001', 'https://ckuro-creative-projects.s3.us-east-2.amazonaws.com'],
+    }
+  },
   { name: "strapi::poweredBy" },
   { name: "strapi::query" },
   {
