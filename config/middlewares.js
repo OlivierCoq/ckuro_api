@@ -59,6 +59,8 @@ module.exports = [
       enabled: true,
       headers: '*',
       origin: ['http://localhost:1337', 'http://localhost:3000', 'http://localhost:3001', 'https://ckuro-creative-projects.s3.us-east-2.amazonaws.com'],
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+      keepHeaderOnError: true,
     }
   },
   { name: "strapi::poweredBy" },
