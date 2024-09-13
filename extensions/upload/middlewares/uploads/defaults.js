@@ -1,9 +1,0 @@
-{
-  "upload": {
-    "enabled": true,
-    "multipart": true,
-    "formidable": {
-      "maxFileSize": 10737418240
-    }
-  }
-}
