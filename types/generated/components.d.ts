@@ -29,6 +29,7 @@ export interface WorkFilter extends Schema.Component {
     label: Attribute.String;
     value: Attribute.String;
     active: Attribute.Boolean & Attribute.DefaultTo<false>;
+    type: Attribute.String;
   };
 }
 
