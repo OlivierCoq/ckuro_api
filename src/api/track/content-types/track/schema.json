@@ -13,7 +13,8 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "single_cover": {
       "type": "media",
@@ -34,10 +35,12 @@
     "ratings": {
       "type": "component",
       "repeatable": false,
-      "component": "work.ratings"
+      "component": "work.ratings",
+      "required": true
     },
     "audio_file": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "music_artists": {
       "type": "relation",

@@ -849,6 +849,7 @@ export interface ApiArtProjectArtProject extends Schema.CollectionType {
     images: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
     description: Attribute.RichText;
     videos: Attribute.Component<'work.art-project-video', true>;
+    target_video: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -986,15 +987,15 @@ export interface ApiTrackTrack extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
+    title: Attribute.String & Attribute.Required;
     single_cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     album: Attribute.Relation<
       'api::track.track',
       'oneToOne',
       'api::album.album'
     >;
-    ratings: Attribute.Component<'work.ratings'>;
-    audio_file: Attribute.String;
+    ratings: Attribute.Component<'work.ratings'> & Attribute.Required;
+    audio_file: Attribute.String & Attribute.Required;
     music_artists: Attribute.Relation<
       'api::track.track',
       'manyToMany',

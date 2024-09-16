@@ -36,6 +36,9 @@
       "type": "component",
       "repeatable": true,
       "component": "work.art-project-video"
+    },
+    "target_video": {
+      "type": "string"
     }
   }
 }
