@@ -874,12 +874,12 @@ export interface ApiBlogPostBlogPost extends Schema.CollectionType {
     singularName: 'blog-post';
     pluralName: 'blog-posts';
     displayName: 'Blog Post';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    body: Attribute.Blocks;
     hero_image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     title: Attribute.String;
     blog_tags: Attribute.Relation<
@@ -887,6 +887,7 @@ export interface ApiBlogPostBlogPost extends Schema.CollectionType {
       'manyToMany',
       'api::blog-tag.blog-tag'
     >;
+    body: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

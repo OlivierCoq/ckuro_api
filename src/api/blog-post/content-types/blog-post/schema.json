@@ -4,25 +4,24 @@
   "info": {
     "singularName": "blog-post",
     "pluralName": "blog-posts",
-    "displayName": "Blog Post"
+    "displayName": "Blog Post",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "body": {
-      "type": "blocks"
-    },
     "hero_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "title": {
       "type": "string"
@@ -32,6 +31,9 @@
       "relation": "manyToMany",
       "target": "api::blog-tag.blog-tag",
       "mappedBy": "blog_posts"
+    },
+    "body": {
+      "type": "richtext"
     }
   }
 }
