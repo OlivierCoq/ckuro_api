@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comment_sections",
+  "info": {
+    "singularName": "comment-section",
+    "pluralName": "comment-sections",
+    "displayName": "Comment Section"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "blog_post": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::blog-post.blog-post"
+    }
+  }
+}

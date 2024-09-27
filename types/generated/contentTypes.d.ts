@@ -941,6 +941,40 @@ export interface ApiBlogTagBlogTag extends Schema.CollectionType {
   };
 }
 
+export interface ApiCommentSectionCommentSection extends Schema.CollectionType {
+  collectionName: 'comment_sections';
+  info: {
+    singularName: 'comment-section';
+    pluralName: 'comment-sections';
+    displayName: 'Comment Section';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    blog_post: Attribute.Relation<
+      'api::comment-section.comment-section',
+      'oneToOne',
+      'api::blog-post.blog-post'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::comment-section.comment-section',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::comment-section.comment-section',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiMusicArtistMusicArtist extends Schema.CollectionType {
   collectionName: 'music_artists';
   info: {
@@ -1120,6 +1154,7 @@ declare module '@strapi/types' {
       'api::art-project.art-project': ApiArtProjectArtProject;
       'api::blog-post.blog-post': ApiBlogPostBlogPost;
       'api::blog-tag.blog-tag': ApiBlogTagBlogTag;
+      'api::comment-section.comment-section': ApiCommentSectionCommentSection;
       'api::music-artist.music-artist': ApiMusicArtistMusicArtist;
       'api::music-interface.music-interface': ApiMusicInterfaceMusicInterface;
       'api::site-nav.site-nav': ApiSiteNavSiteNav;

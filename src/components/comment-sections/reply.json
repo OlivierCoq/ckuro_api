@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_comment_sections_replies",
+  "info": {
+    "displayName": "reply",
+    "icon": "discuss",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "target": {
+      "type": "string"
+    }
+  }
+}

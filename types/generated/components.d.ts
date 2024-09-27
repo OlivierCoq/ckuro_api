@@ -79,6 +79,42 @@ export interface CreatorsSocialLink extends Schema.Component {
   };
 }
 
+export interface CommentSectionsReply extends Schema.Component {
+  collectionName: 'components_comment_sections_replies';
+  info: {
+    displayName: 'reply';
+    icon: 'discuss';
+    description: '';
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'comment-sections.reply',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    body: Attribute.RichText;
+    target: Attribute.String;
+  };
+}
+
+export interface CommentSectionsComment extends Schema.Component {
+  collectionName: 'components_comment_sections_comments';
+  info: {
+    displayName: 'Comment';
+    icon: 'discuss';
+    description: '';
+  };
+  attributes: {
+    body: Attribute.RichText;
+    commenter: Attribute.Relation<
+      'comment-sections.comment',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    replies: Attribute.Component<'comment-sections.reply', true>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -87,6 +123,8 @@ declare module '@strapi/types' {
       'work.art-project-video': WorkArtProjectVideo;
       'navigation.nav-link': NavigationNavLink;
       'creators.social-link': CreatorsSocialLink;
+      'comment-sections.reply': CommentSectionsReply;
+      'comment-sections.comment': CommentSectionsComment;
     }
   }
 }
