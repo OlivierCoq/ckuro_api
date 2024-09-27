@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comment_threads",
+  "info": {
+    "singularName": "comment-thread",
+    "pluralName": "comment-threads",
+    "displayName": "Comment Thread",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "blog_posts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::blog-post.blog-post",
+      "inversedBy": "comment_threads"
+    },
+    "comments": {
+      "type": "component",
+      "repeatable": true,
+      "component": "comment-sections.comment"
+    }
+  }
+}

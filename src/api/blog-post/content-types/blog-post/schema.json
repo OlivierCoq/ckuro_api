@@ -34,6 +34,12 @@
     },
     "body": {
       "type": "richtext"
+    },
+    "comment_threads": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::comment-thread.comment-thread",
+      "mappedBy": "blog_posts"
     }
   }
 }

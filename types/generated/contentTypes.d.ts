@@ -888,6 +888,11 @@ export interface ApiBlogPostBlogPost extends Schema.CollectionType {
       'api::blog-tag.blog-tag'
     >;
     body: Attribute.RichText;
+    comment_threads: Attribute.Relation<
+      'api::blog-post.blog-post',
+      'manyToMany',
+      'api::comment-thread.comment-thread'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -947,6 +952,7 @@ export interface ApiCommentSectionCommentSection extends Schema.CollectionType {
     singularName: 'comment-section';
     pluralName: 'comment-sections';
     displayName: 'Comment Section';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -957,6 +963,7 @@ export interface ApiCommentSectionCommentSection extends Schema.CollectionType {
       'oneToOne',
       'api::blog-post.blog-post'
     >;
+    comment_threads: Attribute.Component<'comment-sections.comment', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -968,6 +975,42 @@ export interface ApiCommentSectionCommentSection extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::comment-section.comment-section',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCommentThreadCommentThread extends Schema.CollectionType {
+  collectionName: 'comment_threads';
+  info: {
+    singularName: 'comment-thread';
+    pluralName: 'comment-threads';
+    displayName: 'Comment Thread';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    blog_posts: Attribute.Relation<
+      'api::comment-thread.comment-thread',
+      'manyToMany',
+      'api::blog-post.blog-post'
+    >;
+    comments: Attribute.Component<'comment-sections.comment', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::comment-thread.comment-thread',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::comment-thread.comment-thread',
       'oneToOne',
       'admin::user'
     > &
@@ -1155,6 +1198,7 @@ declare module '@strapi/types' {
       'api::blog-post.blog-post': ApiBlogPostBlogPost;
       'api::blog-tag.blog-tag': ApiBlogTagBlogTag;
       'api::comment-section.comment-section': ApiCommentSectionCommentSection;
+      'api::comment-thread.comment-thread': ApiCommentThreadCommentThread;
       'api::music-artist.music-artist': ApiMusicArtistMusicArtist;
       'api::music-interface.music-interface': ApiMusicInterfaceMusicInterface;
       'api::site-nav.site-nav': ApiSiteNavSiteNav;
