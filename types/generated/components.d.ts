@@ -112,6 +112,7 @@ export interface CommentSectionsComment extends Schema.Component {
       'plugin::users-permissions.user'
     >;
     replies: Attribute.Component<'comment-sections.reply', true>;
+    visible: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
   };
 }
 
