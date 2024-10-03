@@ -1,51 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface WorkRatings extends Schema.Component {
-  collectionName: 'components_work_ratings';
-  info: {
-    displayName: 'rating_system';
-    description: '';
-  };
-  attributes: {
-    five_stars: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<0>;
-    four_stars: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<0>;
-    three_stars: Attribute.Integer &
-      Attribute.Required &
-      Attribute.DefaultTo<0>;
-    two_stars: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<0>;
-    one_star: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<0>;
-    average_rating: Attribute.Decimal & Attribute.DefaultTo<0>;
-    num_votes: Attribute.Integer & Attribute.DefaultTo<0>;
-  };
-}
-
-export interface WorkFilter extends Schema.Component {
-  collectionName: 'components_work_filters';
-  info: {
-    displayName: 'filter';
-    description: '';
-  };
-  attributes: {
-    label: Attribute.String;
-    value: Attribute.String;
-    active: Attribute.Boolean & Attribute.DefaultTo<false>;
-    type: Attribute.String;
-  };
-}
-
-export interface WorkArtProjectVideo extends Schema.Component {
-  collectionName: 'components_work_art_project_videos';
-  info: {
-    displayName: 'art_project_video';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    link: Attribute.String;
-    poster_image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-  };
-}
-
 export interface NavigationNavLink extends Schema.Component {
   collectionName: 'components_navigation_nav_links';
   info: {
@@ -116,16 +70,62 @@ export interface CommentSectionsComment extends Schema.Component {
   };
 }
 
+export interface WorkRatings extends Schema.Component {
+  collectionName: 'components_work_ratings';
+  info: {
+    displayName: 'rating_system';
+    description: '';
+  };
+  attributes: {
+    five_stars: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<0>;
+    four_stars: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<0>;
+    three_stars: Attribute.Integer &
+      Attribute.Required &
+      Attribute.DefaultTo<0>;
+    two_stars: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<0>;
+    one_star: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<0>;
+    average_rating: Attribute.Decimal & Attribute.DefaultTo<0>;
+    num_votes: Attribute.Integer & Attribute.DefaultTo<0>;
+  };
+}
+
+export interface WorkFilter extends Schema.Component {
+  collectionName: 'components_work_filters';
+  info: {
+    displayName: 'filter';
+    description: '';
+  };
+  attributes: {
+    label: Attribute.String;
+    value: Attribute.String;
+    active: Attribute.Boolean & Attribute.DefaultTo<false>;
+    type: Attribute.String;
+  };
+}
+
+export interface WorkArtProjectVideo extends Schema.Component {
+  collectionName: 'components_work_art_project_videos';
+  info: {
+    displayName: 'art_project_video';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    link: Attribute.String;
+    poster_image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'work.ratings': WorkRatings;
-      'work.filter': WorkFilter;
-      'work.art-project-video': WorkArtProjectVideo;
       'navigation.nav-link': NavigationNavLink;
       'creators.social-link': CreatorsSocialLink;
       'comment-sections.reply': CommentSectionsReply;
       'comment-sections.comment': CommentSectionsComment;
+      'work.ratings': WorkRatings;
+      'work.filter': WorkFilter;
+      'work.art-project-video': WorkArtProjectVideo;
     }
   }
 }
