@@ -1,75 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface NavigationNavLink extends Schema.Component {
-  collectionName: 'components_navigation_nav_links';
-  info: {
-    displayName: 'nav_link';
-  };
-  attributes: {
-    label: Attribute.String;
-    imagery: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
-    link: Attribute.String;
-  };
-}
-
-export interface CreatorsSocialLink extends Schema.Component {
-  collectionName: 'components_creators_social_links';
-  info: {
-    displayName: 'social_link';
-  };
-  attributes: {
-    platform: Attribute.Enumeration<
-      [
-        'instagram',
-        'facebook',
-        'tiktok',
-        'youtube',
-        'spotify',
-        'soundcloud',
-        'x-twitter'
-      ]
-    >;
-    link: Attribute.String;
-  };
-}
-
-export interface CommentSectionsReply extends Schema.Component {
-  collectionName: 'components_comment_sections_replies';
-  info: {
-    displayName: 'reply';
-    icon: 'discuss';
-    description: '';
-  };
-  attributes: {
-    user: Attribute.Relation<
-      'comment-sections.reply',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    body: Attribute.RichText;
-    target: Attribute.String;
-  };
-}
-
-export interface CommentSectionsComment extends Schema.Component {
-  collectionName: 'components_comment_sections_comments';
-  info: {
-    displayName: 'Comment';
-    icon: 'discuss';
-    description: '';
-  };
-  attributes: {
-    body: Attribute.RichText;
-    commenter: Attribute.Relation<
-      'comment-sections.comment',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    replies: Attribute.Component<'comment-sections.reply', true>;
-    visible: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
-  };
-}
-
 export interface WorkRatings extends Schema.Component {
   collectionName: 'components_work_ratings';
   info: {
@@ -116,16 +46,113 @@ export interface WorkArtProjectVideo extends Schema.Component {
   };
 }
 
+export interface NavigationNavLink extends Schema.Component {
+  collectionName: 'components_navigation_nav_links';
+  info: {
+    displayName: 'nav_link';
+  };
+  attributes: {
+    label: Attribute.String;
+    imagery: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    link: Attribute.String;
+  };
+}
+
+export interface CreatorsSocialLink extends Schema.Component {
+  collectionName: 'components_creators_social_links';
+  info: {
+    displayName: 'social_link';
+  };
+  attributes: {
+    platform: Attribute.Enumeration<
+      [
+        'instagram',
+        'facebook',
+        'tiktok',
+        'youtube',
+        'spotify',
+        'soundcloud',
+        'x-twitter'
+      ]
+    >;
+    link: Attribute.String;
+  };
+}
+
+export interface CommunityReactions extends Schema.Component {
+  collectionName: 'components_community_reactions';
+  info: {
+    displayName: 'reactions';
+  };
+  attributes: {
+    vote: Attribute.Enumeration<['upvote', 'downvote']>;
+    number_of_votes: Attribute.Integer;
+    upvotes: Attribute.Integer;
+    downvotes: Attribute.Integer;
+  };
+}
+
+export interface CommunityCommunityLink extends Schema.Component {
+  collectionName: 'components_community_community_links';
+  info: {
+    displayName: 'community_link';
+    icon: 'link';
+  };
+  attributes: {
+    text: Attribute.String;
+    link: Attribute.Text;
+  };
+}
+
+export interface CommentSectionsReply extends Schema.Component {
+  collectionName: 'components_comment_sections_replies';
+  info: {
+    displayName: 'reply';
+    icon: 'discuss';
+    description: '';
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'comment-sections.reply',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    body: Attribute.RichText;
+    target: Attribute.String;
+  };
+}
+
+export interface CommentSectionsComment extends Schema.Component {
+  collectionName: 'components_comment_sections_comments';
+  info: {
+    displayName: 'Comment';
+    icon: 'discuss';
+    description: '';
+  };
+  attributes: {
+    body: Attribute.RichText;
+    commenter: Attribute.Relation<
+      'comment-sections.comment',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    replies: Attribute.Component<'comment-sections.reply', true>;
+    visible: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'navigation.nav-link': NavigationNavLink;
-      'creators.social-link': CreatorsSocialLink;
-      'comment-sections.reply': CommentSectionsReply;
-      'comment-sections.comment': CommentSectionsComment;
       'work.ratings': WorkRatings;
       'work.filter': WorkFilter;
       'work.art-project-video': WorkArtProjectVideo;
+      'navigation.nav-link': NavigationNavLink;
+      'creators.social-link': CreatorsSocialLink;
+      'community.reactions': CommunityReactions;
+      'community.community-link': CommunityCommunityLink;
+      'comment-sections.reply': CommentSectionsReply;
+      'comment-sections.comment': CommentSectionsComment;
     }
   }
 }

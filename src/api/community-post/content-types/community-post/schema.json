@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "community_posts",
+  "info": {
+    "singularName": "community-post",
+    "pluralName": "community-posts",
+    "displayName": "Community Post",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "pics": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "visible": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "comment_threads": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::comment-thread.comment-thread",
+      "mappedBy": "community_posts"
+    },
+    "post_reactions": {
+      "type": "component",
+      "repeatable": false,
+      "component": "community.reactions"
+    },
+    "external_links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "community.community-link"
+    }
+  }
+}

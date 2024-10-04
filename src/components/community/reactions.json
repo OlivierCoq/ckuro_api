@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_community_reactions",
+  "info": {
+    "displayName": "reactions"
+  },
+  "options": {},
+  "attributes": {
+    "vote": {
+      "type": "enumeration",
+      "enum": [
+        "upvote",
+        "downvote"
+      ]
+    },
+    "number_of_votes": {
+      "type": "integer"
+    },
+    "upvotes": {
+      "type": "integer"
+    },
+    "downvotes": {
+      "type": "integer"
+    }
+  }
+}

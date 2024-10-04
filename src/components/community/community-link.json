@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_community_community_links",
+  "info": {
+    "displayName": "community_link",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "link": {
+      "type": "text"
+    }
+  }
+}

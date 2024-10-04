@@ -771,6 +771,16 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.role'
     >;
     ck_token: Attribute.String;
+    liked_community_posts: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::community-post.community-post'
+    >;
+    diskliked_community_posts: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::community-post.community-post'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -964,6 +974,11 @@ export interface ApiCommentThreadCommentThread extends Schema.CollectionType {
       'api::blog-post.blog-post'
     >;
     comments: Attribute.Component<'comment-sections.comment', true>;
+    community_posts: Attribute.Relation<
+      'api::comment-thread.comment-thread',
+      'manyToMany',
+      'api::community-post.community-post'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -975,6 +990,52 @@ export interface ApiCommentThreadCommentThread extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::comment-thread.comment-thread',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCommunityPostCommunityPost extends Schema.CollectionType {
+  collectionName: 'community_posts';
+  info: {
+    singularName: 'community-post';
+    pluralName: 'community-posts';
+    displayName: 'Community Post';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'api::community-post.community-post',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    title: Attribute.String & Attribute.Required;
+    body: Attribute.RichText;
+    pics: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    visible: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
+    comment_threads: Attribute.Relation<
+      'api::community-post.community-post',
+      'manyToMany',
+      'api::comment-thread.comment-thread'
+    >;
+    post_reactions: Attribute.Component<'community.reactions'>;
+    external_links: Attribute.Component<'community.community-link', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::community-post.community-post',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::community-post.community-post',
       'oneToOne',
       'admin::user'
     > &
@@ -1162,6 +1223,7 @@ declare module '@strapi/types' {
       'api::blog-post.blog-post': ApiBlogPostBlogPost;
       'api::blog-tag.blog-tag': ApiBlogTagBlogTag;
       'api::comment-thread.comment-thread': ApiCommentThreadCommentThread;
+      'api::community-post.community-post': ApiCommunityPostCommunityPost;
       'api::music-artist.music-artist': ApiMusicArtistMusicArtist;
       'api::music-interface.music-interface': ApiMusicInterfaceMusicInterface;
       'api::site-nav.site-nav': ApiSiteNavSiteNav;

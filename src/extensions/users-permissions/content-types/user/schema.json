@@ -67,6 +67,16 @@
     },
     "ck_token": {
       "type": "string"
+    },
+    "liked_community_posts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::community-post.community-post"
+    },
+    "diskliked_community_posts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::community-post.community-post"
     }
   }
 }
