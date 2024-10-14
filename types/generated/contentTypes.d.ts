@@ -771,16 +771,8 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.role'
     >;
     ck_token: Attribute.String;
-    liked_community_posts: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToMany',
-      'api::community-post.community-post'
-    >;
-    diskliked_community_posts: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToMany',
-      'api::community-post.community-post'
-    >;
+    upvoted_community_posts: Attribute.JSON;
+    downvoted_community_posts: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1023,7 +1015,8 @@ export interface ApiCommunityPostCommunityPost extends Schema.CollectionType {
       'manyToMany',
       'api::comment-thread.comment-thread'
     >;
-    post_reactions: Attribute.Component<'community.reactions'>;
+    post_reactions: Attribute.Component<'community.reactions'> &
+      Attribute.Required;
     external_links: Attribute.Component<'community.community-link', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

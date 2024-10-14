@@ -1,7 +1,8 @@
 {
   "collectionName": "components_community_reactions",
   "info": {
-    "displayName": "reactions"
+    "displayName": "reactions",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -13,13 +14,16 @@
       ]
     },
     "number_of_votes": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0
     },
     "upvotes": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0
     },
     "downvotes": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0
     }
   }
 }
