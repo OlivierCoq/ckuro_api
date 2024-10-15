@@ -86,7 +86,6 @@ export interface CommunityReactions extends Schema.Component {
     description: '';
   };
   attributes: {
-    vote: Attribute.Enumeration<['upvote', 'downvote']>;
     number_of_votes: Attribute.Integer & Attribute.DefaultTo<0>;
     upvotes: Attribute.Integer & Attribute.DefaultTo<0>;
     downvotes: Attribute.Integer & Attribute.DefaultTo<0>;
