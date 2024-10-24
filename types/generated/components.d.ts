@@ -79,31 +79,6 @@ export interface CreatorsSocialLink extends Schema.Component {
   };
 }
 
-export interface CommunityReactions extends Schema.Component {
-  collectionName: 'components_community_reactions';
-  info: {
-    displayName: 'reactions';
-    description: '';
-  };
-  attributes: {
-    number_of_votes: Attribute.Integer & Attribute.DefaultTo<0>;
-    upvotes: Attribute.Integer & Attribute.DefaultTo<0>;
-    downvotes: Attribute.Integer & Attribute.DefaultTo<0>;
-  };
-}
-
-export interface CommunityCommunityLink extends Schema.Component {
-  collectionName: 'components_community_community_links';
-  info: {
-    displayName: 'community_link';
-    icon: 'link';
-  };
-  attributes: {
-    text: Attribute.String;
-    link: Attribute.Text;
-  };
-}
-
 export interface CommentSectionsReply extends Schema.Component {
   collectionName: 'components_comment_sections_replies';
   info: {
@@ -141,6 +116,31 @@ export interface CommentSectionsComment extends Schema.Component {
   };
 }
 
+export interface CommunityReactions extends Schema.Component {
+  collectionName: 'components_community_reactions';
+  info: {
+    displayName: 'reactions';
+    description: '';
+  };
+  attributes: {
+    number_of_votes: Attribute.Integer & Attribute.DefaultTo<0>;
+    upvotes: Attribute.Integer & Attribute.DefaultTo<0>;
+    downvotes: Attribute.Integer & Attribute.DefaultTo<0>;
+  };
+}
+
+export interface CommunityCommunityLink extends Schema.Component {
+  collectionName: 'components_community_community_links';
+  info: {
+    displayName: 'community_link';
+    icon: 'link';
+  };
+  attributes: {
+    text: Attribute.String;
+    link: Attribute.Text;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -149,10 +149,10 @@ declare module '@strapi/types' {
       'work.art-project-video': WorkArtProjectVideo;
       'navigation.nav-link': NavigationNavLink;
       'creators.social-link': CreatorsSocialLink;
-      'community.reactions': CommunityReactions;
-      'community.community-link': CommunityCommunityLink;
       'comment-sections.reply': CommentSectionsReply;
       'comment-sections.comment': CommentSectionsComment;
+      'community.reactions': CommunityReactions;
+      'community.community-link': CommunityCommunityLink;
     }
   }
 }

@@ -1113,6 +1113,29 @@ export interface ApiMusicInterfaceMusicInterface extends Schema.SingleType {
   };
 }
 
+export interface ApiPagePage extends Schema.CollectionType {
+  collectionName: 'pages';
+  info: {
+    singularName: 'page';
+    pluralName: 'pages';
+    displayName: 'page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    html: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSiteNavSiteNav extends Schema.SingleType {
   collectionName: 'site_navs';
   info: {
@@ -1219,6 +1242,7 @@ declare module '@strapi/types' {
       'api::community-post.community-post': ApiCommunityPostCommunityPost;
       'api::music-artist.music-artist': ApiMusicArtistMusicArtist;
       'api::music-interface.music-interface': ApiMusicInterfaceMusicInterface;
+      'api::page.page': ApiPagePage;
       'api::site-nav.site-nav': ApiSiteNavSiteNav;
       'api::track.track': ApiTrackTrack;
     }
